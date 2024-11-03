@@ -14,11 +14,14 @@ let resetBtn = document.getElementById('reset-btn');
 
 let check = false;
 
+// Creating a new instance of Audio 
+
 let audio = new Audio('back-tick-107822.mp3');
 
 let i = 0;
 let lapNumber = 1;
 
+// Function controlling the start button
 
 function start(){
     
@@ -46,27 +49,34 @@ function start(){
 
 }
 
+// Function controlling the reset button
+
 function resetTimer(){
     if(check == false){
         minutes.innerText = '00';
         seconds.innerText = '00';
         milliseconds.innerText = '00';
         
-        display_lap.innerHTML = "";
+        display_lap.innerHTML = ""; // clears all the laps in the div
+        lapNumber = 1;              // re-inizializes lapNumber to 1
     }
 }
+
+// function controlling the lap button
 
 function getLapNumber(){
     if(check == true){
         text = `Lap ${lapNumber} : ${minutes.innerText} : ${seconds.innerText} : ${milliseconds.innerText}`;
         lapNumber += 1;
 
-        let lap = document.createElement('p');
-        lap.setAttribute('id', 'plap');
+        let lap = document.createElement('p'); // creating a paragrah element 
+        lap.setAttribute('id', 'plap');        // giving it an id so it can be styled
         lap.innerText = text;
-        display_lap.appendChild(lap);
+        display_lap.appendChild(lap);          // placing it inside the display div
     }
 }
+
+// Setting the click events for the various buttons 
 
 startBtn.addEventListener('click', start);
 resetBtn.addEventListener('click', resetTimer);
